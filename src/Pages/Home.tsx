@@ -2,6 +2,7 @@ import { Content } from "../Components/Content";
 import { ImageCard } from "../Components/ImageCard";
 import { FaGithub } from "react-icons/fa";
 import React from "react";
+import { images } from "../Assets";
 
 let whiteSpace = " ";
 
@@ -30,7 +31,7 @@ export const Home = () => {
                     height: "800px",
                     width: "100%",
                     backgroundImage:
-                        'url("https://im7.ezgif.com/tmp/ezgif-7-95a0070715.gif")',
+                        'url("https://i.ibb.co/GRyLTQh/black-Background.gif")',
                     backgroundSize: "cover",
                 }}
             >
