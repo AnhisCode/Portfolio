@@ -2,23 +2,10 @@ import { Content } from "../Components/Content";
 import { ImageCard } from "../Components/ImageCard";
 import { FaGithub } from "react-icons/fa";
 import React from "react";
-import { images } from "../Assets";
-
-let whiteSpace = " ";
+import { ProjectCardInfos } from "../Assets/ProjectCard";
 
 export const Home = () => {
-    const mediaBotCard = {
-        imageLocation: "https://i.ibb.co/M5pn7Tz/Media-Bot.png",
-        cardTitle: "Media Bot",
-        cardText:
-            "A Twitch notification Discord Bot created using the APIs: discord " +
-            "JDA for java, Twitch4j and TwitchHelix. Currently being utilised by 30+ popular streamers " +
-            "and stores 5000+ twitch viewer information using sqlite. Complete setup of CI/CD " +
-            "functionality using Jenkins and a VPS.",
-        buttontext: <FaGithub style={{ margin: "auto" }} />,
-        buttonLink: "https://github.com/AnhisCode/SocialMediaBot",
-        date: "20 Jan 2022",
-    };
+    "https://i.ibb.co/N1Cd45d/demolition.gif";
 
     return (
         <div
@@ -26,9 +13,8 @@ export const Home = () => {
             style={{ height: "100%" }}
         >
             <div
-                className={"bg-black"}
+                className={"bg-black sm:h-[600px] h-[250px] flex items-center"}
                 style={{
-                    height: "800px",
                     width: "100%",
                     backgroundImage:
                         'url("https://i.ibb.co/GRyLTQh/black-Background.gif")',
@@ -39,24 +25,34 @@ export const Home = () => {
                     {" "}
                     {/*Title*/}
                     <h1
-                        className={"text-white ml-[10%] pt-[10%] text-5xl"}
+                        className={"text-white ml-[20%] sm:text-5xl text-md"}
                         style={{ fontFamily: "'Courier New', monospace" }}
                     >
                         const programmer = &#123;
                         <br />
-                        <p className={"pl-[9rem] py-2"}>
+                        <p className={"sm:pl-[9rem] pl-[5rem] py-2"}>
                             name: &quot;Anh Dao&quot;,
                         </p>
-                        <p className={"pl-[9rem] py-2"}>age: 19,</p>
-                        <p className={"pl-[9rem] pt-2"}>
+                        <p className={"sm:pl-[9rem] pl-[5rem] py-2"}>
+                            age: 19,
+                        </p>
+                        <p className={"sm:pl-[9rem] pl-[5rem] pt-2"}>
                             occupation: &quot;CS Student&quot;
                         </p>
                         &#125;;
                     </h1>
                 </div>
             </div>
-            <Content title="Past/Ongoing Projects">
-                <ImageCard texts={mediaBotCard} />
+            <Content title="Projects">
+                <div className={"row"}>
+                    <div className={"col-md-6 "}>
+                        <ImageCard texts={ProjectCardInfos.mediaBotCard} />
+                        <ImageCard texts={ProjectCardInfos.anhimations} />
+                    </div>
+                    <div className={"col-md-6"}>
+                        <ImageCard texts={ProjectCardInfos.demolition} />
+                    </div>
+                </div>
             </Content>
         </div>
     );

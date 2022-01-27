@@ -1,28 +1,29 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import { Link } from "react-router-dom";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export const NavigationBar = (): React.ReactElement => {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <div>
             <nav className="bg-gradient-to-r from-slate-600 to-slate-900">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="mx-auto">
                     <div className="flex items-center justify-between h-16">
                         <div className="flex items-center">
                             <div className="flex-shrink-0"></div>
                             <div className="hidden md:block">
-                                <div className="ml-10 flex items-baseline space-x-4">
+                                <div className="flex items-baseline space-x-4">
                                     <Link
-                                        to={"/home"}
-                                        className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
+                                        to={"/"}
+                                        className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-xl font-medium"
                                     >
                                         Home
                                     </Link>
 
                                     <Link
                                         to={"/login"}
-                                        className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
+                                        className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-xl font-medium"
                                     >
                                         Login
                                     </Link>
@@ -72,6 +73,34 @@ export const NavigationBar = (): React.ReactElement => {
                                     </svg>
                                 )}
                             </button>
+                        </div>
+                        {/*react icons*/}
+                        <div className={"flex items-baseline space-x-2 mr-4"}>
+                            <a
+                                href={"https://github.com/AnhisCode"}
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                <FaGithub
+                                    className={
+                                        "fill-white text-3xl hover:fill-amber-600"
+                                    }
+                                />
+                            </a>
+
+                            <a
+                                href={
+                                    "https://www.linkedin.com/in/anh-dao-a18079210"
+                                }
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                <FaLinkedin
+                                    className={
+                                        "fill-white text-3xl hover:fill-blue-500"
+                                    }
+                                />
+                            </a>
                         </div>
                     </div>
                 </div>
