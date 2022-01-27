@@ -9,7 +9,7 @@ export const NavigationBar = (): React.ReactElement => {
         <div>
             <nav className="bg-gradient-to-r from-slate-600 to-slate-900">
                 <div className="mx-auto">
-                    <div className="flex items-center justify-between h-16">
+                    <div className="flex items-center justify-between h-16 px-2">
                         <div className="flex items-center">
                             <div className="flex-shrink-0"></div>
                             <div className="hidden md:block">
@@ -75,7 +75,7 @@ export const NavigationBar = (): React.ReactElement => {
                             </button>
                         </div>
                         {/*react icons*/}
-                        <div className={"flex items-baseline space-x-2 mr-4"}>
+                        <div className={"flex items-baseline space-x-2"}>
                             <a
                                 href={"https://github.com/AnhisCode"}
                                 target="_blank"
