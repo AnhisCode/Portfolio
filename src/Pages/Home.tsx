@@ -48,11 +48,12 @@ export const Home = () => {
             <Content title="Projects">
                 <div className={"row"}>
                     <div className={"col-md-6 "}>
-                        <ImageCard texts={ProjectCardInfos.mediaBotCard} />
-                        <ImageCard texts={ProjectCardInfos.anhimations} />
+                        <ImageCard texts={ProjectCardInfos.portfolio} />
+                        <ImageCard texts={ProjectCardInfos.demolition} />
                     </div>
                     <div className={"col-md-6"}>
-                        <ImageCard texts={ProjectCardInfos.demolition} />
+                        <ImageCard texts={ProjectCardInfos.mediaBotCard} />
+                        <ImageCard texts={ProjectCardInfos.anhimations} />
                     </div>
                 </div>
             </Content>

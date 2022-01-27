@@ -9,11 +9,13 @@ import {
     SiTwitch,
     SiAdobeaftereffects,
     SiSqlite,
+    SiReact,
+    SiHtml5,
+    SiCss3,
+    SiTailwindcss,
+    SiBootstrap,
+    SiJenkins,
 } from "react-icons/si";
-
-<p>
-    <FaReact /> <SiTypescript />
-</p>;
 
 export const ProjectCardInfos = {
     mediaBotCard: {
@@ -34,6 +36,7 @@ export const ProjectCardInfos = {
                 <SiDiscord className={"text-xl translate-y-1"} />
                 <SiTwitch className={"text-xl translate-y-1"} />
                 <SiSqlite className={"text-xl translate-y-1"} />
+                <SiJenkins className={"text-xl translate-y-1"} />
             </>
         ),
     },
@@ -64,6 +67,26 @@ export const ProjectCardInfos = {
         languages: (
             <>
                 <SiAdobeaftereffects className={"text-xl translate-y-1"} />
+            </>
+        ),
+    },
+    portfolio: {
+        imageLocation: "https://i.ibb.co/GRyLTQh/black-Background.gif",
+        cardTitle: "Portfolio Website",
+        cardText:
+            "A website created using React Typescript. Used Tailwind and Bootstrap libraries " +
+            "for styling.",
+        buttontext: <FaGithub style={{ margin: "auto" }} />,
+        buttonLink: "https://github.com/AnhisCode/Portfolio",
+        date: "Jan 2022",
+        languages: (
+            <>
+                <SiReact className={"text-xl translate-y-1"} />
+                <SiHtml5 className={"text-xl translate-y-1"} />
+                <SiTypescript className={"text-xl translate-y-1"} />
+                <SiCss3 className={"text-xl translate-y-1"} />
+                <SiTailwindcss className={"text-xl translate-y-1"} />
+                <SiBootstrap className={"text-xl translate-y-1"} />
             </>
         ),
     },
