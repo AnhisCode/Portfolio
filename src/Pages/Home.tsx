@@ -25,7 +25,9 @@ export const Home = () => {
                     {" "}
                     {/*Title*/}
                     <h1
-                        className={"text-white ml-[20%] sm:text-5xl text-md"}
+                        className={
+                            "text-white ml-[20%] sm:text-5xl text-md motion-safe:animate-fadeIn font-bold"
+                        }
                         style={{ fontFamily: "'Courier New', monospace" }}
                     >
                         const programmer = &#123;
@@ -36,7 +38,7 @@ export const Home = () => {
                         <p className={"sm:pl-[9rem] pl-[5rem] py-2"}>
                             age: 19,
                         </p>
-                        <p className={"sm:pl-[9rem] pl-[5rem] pt-2"}>
+                        <p className={"sm:pl-[9rem] pl-[5rem] py-2"}>
                             occupation: &quot;CS Student&quot;
                         </p>
                         &#125;;

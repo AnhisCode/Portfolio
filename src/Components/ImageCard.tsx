@@ -8,12 +8,13 @@ export interface ImageCardProps {
         buttontext?: React.ReactElement;
         buttonLink: string;
         date: string;
+        languages?: React.ReactElement;
     };
 }
 
 export const ImageCard = (props: ImageCardProps): React.ReactElement => {
     return (
-        <div className="card mb-[24px] shadow-xl border-8 border-white cursor-pointer">
+        <div className="card mb-[24px] shadow-xl border-8 border-white">
             <img
                 className="card-img-top shadow-md"
                 src={props.texts.imageLocation}
@@ -23,7 +24,10 @@ export const ImageCard = (props: ImageCardProps): React.ReactElement => {
                 <h5 className="card-title text-xl font-semibold">
                     {props.texts.cardTitle} - {props.texts.date}
                 </h5>
-                <p className="card-text mb-3">{props.texts.cardText}</p>
+                <div className={"text-md flex items-baseline space-x-2"}>
+                    {props.texts.languages}
+                </div>
+                <p className="card-text mb-3 mt-3">{props.texts.cardText}</p>
                 <a
                     href={props.texts.buttonLink}
                     target="_blank"
