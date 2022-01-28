@@ -74,7 +74,7 @@ export const ProjectCardInfos = {
         imageLocation: "https://i.ibb.co/GRyLTQh/black-Background.gif",
         cardTitle: "Portfolio Website",
         cardText:
-            "A website created using React Typescript. Used Tailwind and Bootstrap libraries " +
+            "A website created using React Typescript. Used Tailwind, Bootstrap and various other external libraries " +
             "for styling.",
         buttontext: <FaGithub style={{ margin: "auto" }} />,
         buttonLink: "https://github.com/AnhisCode/Portfolio",

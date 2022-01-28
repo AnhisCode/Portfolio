@@ -101,17 +101,9 @@ export const YourComponent = () => {
         counter++;
     };
 
-    const keyPressed = () => {
-        if (colour == 100) {
-            colour = 0;
-        } else {
-            colour = 100;
-        }
-    };
-
     return (
         <>
-            <Sketch setup={setup} draw={draw} keyPressed={keyPressed} />
+            <Sketch setup={setup} draw={draw} />
         </>
     );
 };
