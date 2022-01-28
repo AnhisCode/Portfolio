@@ -1,13 +1,6 @@
 import React from "react";
 import Sketch from "react-p5";
 import p5Types from "p5";
-import { randomInt } from "crypto";
-import { setPosition } from "react-responsive-carousel/lib/ts/components/Carousel/utils";
-import { screen } from "@testing-library/react"; //Import this for typechecking and intellisense
-
-interface ComponentProps {
-    //Your component props
-}
 
 // circle class for putting points into canvas
 class Circle {
@@ -33,6 +26,7 @@ class Circle {
 
     setDead() {
         this.alive = false;
+        circleCount--;
     }
 
     draw() {
@@ -53,18 +47,28 @@ class Circle {
     }
 }
 
-const height = 1000;
-const width = window.innerWidth;
-let colour = 0;
-let circleLimit = 200;
-let circleCount = circleLimit;
-let counter = 0;
-let arr: Circle[] = [];
+let circleCount = 0;
 
-export const YourComponent: React.FC<ComponentProps> = (
-    props: ComponentProps,
-) => {
+export const YourComponent = () => {
+    let height = 0;
+    const width = window.screen.width;
+    let colour = 0;
+    let circleLimit = 0;
+    circleCount = circleLimit;
+    let counter = 0;
+    let arr: Circle[] = [];
+
     const setup = (p5: p5Types, canvasParentRef: Element) => {
+        height = document.body.scrollHeight; // obtain height
+        // but still have a minimum
+        if (height < window.screen.height) {
+            height = window.screen.height;
+            circleLimit = width / 30;
+        } else {
+            circleLimit = width / 30 + height / 50; // calculate limit for appropriate objects
+        }
+        circleCount = circleLimit;
+
         // put canvas behind everything else
         let canvas = p5.createCanvas(width, height).parent(canvasParentRef);
         canvas.style("z-index", "-1");
@@ -72,7 +76,7 @@ export const YourComponent: React.FC<ComponentProps> = (
 
         //initiate with 100 circle at random point on screen
         for (let i = 0; i < circleLimit; i++) {
-            let randomY = Math.random() * height + 200;
+            let randomY = Math.random() * height;
             let randomX = Math.random() * width;
             arr.push(new Circle(randomX, randomY, p5));
         }
@@ -85,16 +89,13 @@ export const YourComponent: React.FC<ComponentProps> = (
 
         //make sure it doesn't exceed a certain number
         if (counter % 5 == 0 && circleCount < circleLimit) {
-            arr.push(new Circle(randomX, height + 200, p5));
+            arr.push(new Circle(randomX, height + 10, p5));
             circleCount++;
         }
 
         // call draw on all circle objects
         for (let i = 0; i < arr.length; i++) {
             arr[i].draw();
-            if (!arr[i].alive) {
-                circleCount--;
-            }
         }
 
         counter++;
@@ -110,7 +111,6 @@ export const YourComponent: React.FC<ComponentProps> = (
 
     return (
         <>
-            <div className={"text-5xl text-white"}>Hello World</div>
             <Sketch setup={setup} draw={draw} keyPressed={keyPressed} />
         </>
     );

@@ -9,10 +9,8 @@ export const Home = () => {
     "https://i.ibb.co/N1Cd45d/demolition.gif";
 
     return (
-        <div
-            className={"bg-gradient-to-r from-slate-600 to-slate-900"}
-            style={{ height: "100%" }}
-        >
+        <div className={""} style={{ height: "100%" }}>
+            <YourComponent />
             <div
                 className={"bg-black sm:h-[600px] h-[250px] flex items-center"}
                 style={{

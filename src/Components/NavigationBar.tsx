@@ -7,7 +7,7 @@ export const NavigationBar = (): React.ReactElement => {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <div>
-            <nav className="bg-gradient-to-r from-slate-600 to-slate-900">
+            <nav className="bg-zinc-800">
                 <div className="mx-auto">
                     <div className="flex items-center justify-between h-16 px-2">
                         <div className="flex items-center">
