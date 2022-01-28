@@ -1,62 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Sketch from "react-p5";
 import p5Types from "p5";
+import { Circle, Line } from "./BackgroundComponent";
+import { useLocation } from "react-router-dom";
 
-// circle class for putting points into canvas
-class Circle {
-    x: number;
-    y: number;
-    opacity: number;
-    counter: number;
-    alive: boolean;
-    p5: p5Types;
-    xDirection: number;
-    yDirection: number;
-
-    constructor(x: number, y: number, p5: p5Types) {
-        this.x = x;
-        this.y = y;
-        this.counter = 0;
-        this.alive = true;
-        this.p5 = p5;
-        this.opacity = Math.random() * 255;
-        this.xDirection = Math.random() * (0.1 - -0.1) + -0.1;
-        this.yDirection = Math.random() * (0.3 - 0.15) + 0.15;
-    }
-
-    setDead() {
-        this.alive = false;
-        circleCount--;
-    }
-
-    draw() {
-        if (this.alive) {
-            let p5 = this.p5;
-            p5.ellipse(this.x, this.y, 10);
-            p5.fill(255, 255, 255, this.opacity);
-            this.x += this.xDirection;
-            this.y -= this.yDirection;
-            // offscreen
-            if (this.y < 0) {
-                this.setDead();
-            }
-            if (this.counter == 500) {
-                this.setDead();
-            }
-        }
-    }
+interface sketchComponent {
+    height: number;
+    width: number;
 }
 
 let circleCount = 0;
+let lineCount = 0;
 
-export const YourComponent = () => {
+export const ConstellationBg = () => {
+    const history = useLocation();
+    useEffect(() => {
+        // initiate refresh here
+    }, []);
+
     let height = 0;
     const width = window.screen.width;
     let colour = 0;
     let circleLimit = 0;
     circleCount = circleLimit;
+    let lineLimit = 0;
     let counter = 0;
-    let arr: Circle[] = [];
+    let circleArr: Circle[] = [];
+    let lineArr: Line[] = [];
 
     const setup = (p5: p5Types, canvasParentRef: Element) => {
         height = document.body.scrollHeight; // obtain height
@@ -65,8 +35,9 @@ export const YourComponent = () => {
             height = window.screen.height;
             circleLimit = width / 30;
         } else {
-            circleLimit = width / 30 + height / 50; // calculate limit for appropriate objects
+            circleLimit = width / 30 + height / 30; // calculate limit for appropriate objects
         }
+        lineLimit = circleLimit / 2;
         circleCount = circleLimit;
 
         // put canvas behind everything else
@@ -78,7 +49,7 @@ export const YourComponent = () => {
         for (let i = 0; i < circleLimit; i++) {
             let randomY = Math.random() * height;
             let randomX = Math.random() * width;
-            arr.push(new Circle(randomX, randomY, p5));
+            circleArr.push(new Circle(randomX, randomY, p5));
         }
     };
 
@@ -89,16 +60,54 @@ export const YourComponent = () => {
 
         //make sure it doesn't exceed a certain number
         if (counter % 5 == 0 && circleCount < circleLimit) {
-            arr.push(new Circle(randomX, height + 10, p5));
+            circleArr.push(new Circle(randomX, height + 10, p5));
             circleCount++;
         }
 
-        // call draw on all circle objects
-        for (let i = 0; i < arr.length; i++) {
-            arr[i].draw();
+        // call draw on all objects and remove dead ones
+        for (let i = 0; i < circleArr.length; i++) {
+            circleArr[i].draw();
+            if (!circleArr[i].alive) {
+                circleArr.splice(i, 1);
+                circleCount--;
+            }
+        }
+        for (let i = 0; i < lineArr.length; i++) {
+            lineArr[i].draw();
+            if (!lineArr[i].alive) {
+                lineArr.splice(i, 1);
+                lineCount--;
+            }
+        }
+
+        // check and create lines
+        while (lineCount < lineLimit) {
+            let randomI1 = Math.round(Math.random() * circleCount) - 1;
+            while (circleArr[randomI1] == undefined) {
+                randomI1 = Math.round(Math.random() * circleCount) - 1;
+            }
+            let circle1 = circleArr[randomI1];
+            let randomI2 = Math.round(Math.random() * circleCount) - 1;
+            //ensure they are not the same number or already connected
+            while (
+                randomI1 === randomI2 ||
+                circle1.connectedPoints.includes(circleArr[randomI2]) ||
+                circleArr[randomI2] == undefined
+            ) {
+                randomI2 = Math.round(Math.random() * circleCount) - 1;
+            }
+            let circle2 = circleArr[randomI2];
+            circle1.addConnectedPoint(circle2);
+            circle2.addConnectedPoint(circle1);
+            lineArr.push(new Line(circle1, circle2, p5));
+            lineCount++;
         }
 
         counter++;
+
+        // p5.line(100, 100, 200, 200);
+        // p5.stroke("white");
+        // p5.strokeWeight(2);
     };
 
     return (

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export const NavigationBar = (): React.ReactElement => {
+    const location = { from: useLocation().pathname };
     const [isOpen, setIsOpen] = useState(false);
     return (
         <div>
@@ -17,6 +18,7 @@ export const NavigationBar = (): React.ReactElement => {
                                     <Link
                                         to={"/"}
                                         className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-xl font-medium"
+                                        state={location}
                                     >
                                         Home
                                     </Link>
@@ -24,6 +26,7 @@ export const NavigationBar = (): React.ReactElement => {
                                     <Link
                                         to={"/login"}
                                         className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-xl font-medium"
+                                        state={location}
                                     >
                                         Login
                                     </Link>

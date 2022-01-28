@@ -1,16 +1,15 @@
 import { Content } from "../Components/Content";
 import { ImageCard } from "../Components/ImageCard";
 import { FaGithub } from "react-icons/fa";
-import React from "react";
+import React, { useEffect } from "react";
 import { ProjectCardInfos } from "../Assets/ProjectCard";
-import { YourComponent } from "../Components/sketchedBackground";
+import { ConstellationBg } from "../Components/sketchedBackground";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const Home = () => {
-    "https://i.ibb.co/N1Cd45d/demolition.gif";
-
     return (
         <div className={""} style={{ height: "100%" }}>
-            <YourComponent />
+            <ConstellationBg />
             <div
                 className={"bg-black sm:h-[600px] h-[250px] flex items-center"}
                 style={{
