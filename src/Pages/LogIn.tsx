@@ -1,3 +1,10 @@
+import { YourComponent } from "../Components/sketchedBackground";
+import React from "react";
+
 export const LogIn = () => {
-    return <div>Login Page</div>;
+    return (
+        <div>
+            <YourComponent />
+        </div>
+    );
 };

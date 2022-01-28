@@ -3,6 +3,7 @@ import { ImageCard } from "../Components/ImageCard";
 import { FaGithub } from "react-icons/fa";
 import React from "react";
 import { ProjectCardInfos } from "../Assets/ProjectCard";
+import { YourComponent } from "../Components/sketchedBackground";
 
 export const Home = () => {
     "https://i.ibb.co/N1Cd45d/demolition.gif";
@@ -32,18 +33,17 @@ export const Home = () => {
                     >
                         const programmer = &#123;
                         <br />
-                        <p className={"sm:pl-[9rem] pl-[5rem] py-2"}>
+                        <p className={"sm:pl-[9rem] pl-[5rem]"}>
                             name: &quot;Anh Dao&quot;,
                         </p>
-                        <p className={"sm:pl-[9rem] pl-[5rem] py-2"}>
-                            age: 19,
-                        </p>
-                        <p className={"sm:pl-[9rem] pl-[5rem] py-2"}>
+                        <p className={"sm:pl-[9rem] pl-[5rem]"}>age: 19,</p>
+                        <p className={"sm:pl-[9rem] pl-[5rem]"}>
                             occupation: &quot;CS Student&quot;
                         </p>
                         &#125;;
                     </h1>
-                </div>
+                </div>{" "}
+                {/*title*/}
             </div>
             <Content title="Projects">
                 <div className={"row"}>
