@@ -17,37 +17,44 @@ export class Line {
     draw() {
         // value undefined
         if (this.pointRef1 === undefined || this.pointRef2 === undefined) {
-            this.alive = false;
+            this.handleDeath();
             return;
         }
+        if (!this.pointRef1.alive || !this.pointRef2.alive) {
+            this.handleDeath();
+            return;
+        }
+
         let p5 = this.p5;
         let x1 = this.pointRef1.x;
         let x2 = this.pointRef2.x;
         let y1 = this.pointRef1.y;
         let y2 = this.pointRef2.y;
+
         if (this.alive) {
-            //check line too long
+            //check line too long or too short
             let xComponents = (x1 - x2) * (x1 - x2);
             let yComponents = (y1 - y2) * (y1 - y2);
             let distance = Math.sqrt(xComponents + yComponents);
-            if (distance > 200) {
-                this.alive = false;
+            if (distance > 200 || distance < 100) {
+                this.handleDeath();
                 return;
             }
 
-            //opacity is the value in between 2 circles
-            let opacity =
-                (this.pointRef1.opacity - this.pointRef2.opacity) / 255;
-            if (opacity < 0) {
-                opacity = opacity * -1;
-            }
-            this.pointRef2.opacity = 255;
-            this.pointRef1.opacity = 255;
             // both circle points are standing
             p5.line(x1, y1, x2, y2);
             p5.strokeWeight(3);
             p5.stroke("rgba(100%,100%,100%,0.7)");
+
+            this.pointRef2.opacity = 255;
+            this.pointRef1.opacity = 255;
         }
+    }
+
+    handleDeath() {
+        this.alive = false;
+        this.pointRef1.removeConnectedPoint(this.pointRef2);
+        this.pointRef2.removeConnectedPoint(this.pointRef1);
     }
 }
 
@@ -80,6 +87,11 @@ export class Circle {
 
     addConnectedPoint(point: Circle) {
         this.connectedPoints.push(point);
+    }
+
+    removeConnectedPoint(point: Circle) {
+        let index = this.connectedPoints.indexOf(point);
+        this.connectedPoints.splice(index, 1);
     }
 
     draw() {

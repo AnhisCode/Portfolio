@@ -11,7 +11,7 @@ export const Home = () => {
         <div className={""} style={{ height: "100%" }}>
             <ConstellationBg />
             <div
-                className={"bg-black sm:h-[600px] h-[250px] flex items-center"}
+                className={" sm:h-[600px] h-[250px] flex items-center"}
                 style={{
                     width: "100%",
                     backgroundImage:

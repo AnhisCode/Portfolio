@@ -106,11 +106,22 @@ export const ConstellationBg = () => {
                 randomI2 = Math.round(Math.random() * circleCount) - 1;
             }
             let circle2 = circleArr[randomI2];
+
+            // make sure the total connected point doesnt exceed 2
+            if (
+                circle1.connectedPoints.length > 3 ||
+                circle2.connectedPoints.length > 3
+            ) {
+                continue;
+            }
+
             circle1.addConnectedPoint(circle2);
             circle2.addConnectedPoint(circle1);
             lineArr.push(new Line(circle1, circle2, p5));
             lineCount++;
         }
+
+        console.log(lineCount);
 
         counter++;
 
