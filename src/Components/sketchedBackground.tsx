@@ -13,12 +13,12 @@ let circleCount = 0;
 let lineCount = 0;
 
 export const ConstellationBg = () => {
-    const history = useLocation();
+    // reset whenever entering
     useEffect(() => {
-        // initiate refresh here
+        reset();
     }, []);
 
-    let height = 0;
+    let height = document.body.scrollHeight; // obtain height
     const width = window.screen.width;
     let colour = 0;
     let circleLimit = 0;
@@ -27,6 +27,15 @@ export const ConstellationBg = () => {
     let counter = 0;
     let circleArr: Circle[] = [];
     let lineArr: Line[] = [];
+
+    // reset function for entering new page
+    const reset = () => {
+        circleArr.forEach((circle) => {
+            circle.connectedPoints = [];
+        });
+        lineCount = 0;
+        lineArr = [];
+    };
 
     const setup = (p5: p5Types, canvasParentRef: Element) => {
         height = document.body.scrollHeight; // obtain height

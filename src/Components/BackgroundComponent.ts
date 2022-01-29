@@ -41,10 +41,12 @@ export class Line {
             if (opacity < 0) {
                 opacity = opacity * -1;
             }
+            this.pointRef2.opacity = 255;
+            this.pointRef1.opacity = 255;
             // both circle points are standing
             p5.line(x1, y1, x2, y2);
             p5.strokeWeight(3);
-            p5.stroke("rgba(100%,100%,100%,0.5)");
+            p5.stroke("rgba(100%,100%,100%,0.7)");
         }
     }
 }
