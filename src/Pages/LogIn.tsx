@@ -11,7 +11,7 @@ export const LogIn = () => {
         <div>
             <ConstellationBg />
             <div style={{ overflow: "hidden" }}>
-                <div className={"text-5xl text-white"}>Hello World</div>
+                <div className={"text-5xl text-white"}></div>
             </div>
         </div>
     );

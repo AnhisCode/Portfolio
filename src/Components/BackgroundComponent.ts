@@ -76,8 +76,8 @@ export class Circle {
         this.alive = true;
         this.p5 = p5;
         this.opacity = Math.random() * 255;
-        this.xDirection = Math.random() * (0.1 - -0.1) + -0.1;
-        this.yDirection = Math.random() * (0.3 - 0.15) + 0.15;
+        this.xDirection = (Math.random() * (0.1 - -0.1) + -0.1) * 1.5;
+        this.yDirection = (Math.random() * (0.3 - 0.15) + 0.15) * 2;
         this.connectedPoints = [];
     }
 

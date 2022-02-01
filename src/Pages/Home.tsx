@@ -5,6 +5,8 @@ import React, { useEffect } from "react";
 import { ProjectCardInfos } from "../Assets/ProjectCard";
 import { ConstellationBg } from "../Components/sketchedBackground";
 import { useLocation, useNavigate } from "react-router-dom";
+import { SkillGraph } from "../Components/SkillGraph";
+import { AnhSkills } from "../Assets/AnhSkills";
 
 export const Home = () => {
     return (
@@ -53,6 +55,9 @@ export const Home = () => {
                         <ImageCard texts={ProjectCardInfos.anhimations} />
                     </div>
                 </div>
+            </Content>
+            <Content title={"Skills"}>
+                <SkillGraph skills={AnhSkills.skills} />
             </Content>
         </div>
     );

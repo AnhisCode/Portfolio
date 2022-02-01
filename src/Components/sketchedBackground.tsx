@@ -121,8 +121,6 @@ export const ConstellationBg = () => {
             lineCount++;
         }
 
-        console.log(lineCount);
-
         counter++;
 
         // p5.line(100, 100, 200, 200);
